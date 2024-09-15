@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Celebration</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #e0f7fa;
+            background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
+            background-size: cover;
+        }
+        .hidden {
+            display: none;
+        }
+        #form-container, #main-page {
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            font-size: 36px;
+            color: #039be5; /* Bright Blue */
+        }
+        p {
+            font-size: 20px;
+            color: #0288d1; /* Darker Blue */
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #039be5;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #039be5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0288d1; /* Darker Blue */
+        }
+        h1 {
+            font-size: 60px;
+            color: #0288d1; /* Darker Blue */
+            margin-bottom: 20px;
+        }
+        #qr-container {
+            position: relative;
+            display: inline-block;
+        }
+        #qr-container img {
+            width: 200px;
+            height: auto;
+        }
+        .top-left {
+            top: -30px;
+            left: -30px;
+        }
+        .top-right {
+            top: -30px;
+            right: -30px;
+        }
+        .bottom-left {
+            bottom: -30px;
+            left: -30px;
+        }
+        .bottom-right {
+            bottom: -30px;
+            right: -30px;
+        }
+        #error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form Section -->
+    <div id="form-container">
+        <h2>Birthday Question</h2>
+        <p>What programming language are you learning?</p>
+        <input type="text" id="user-answer" placeholder="Your answer">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="error-message"></p>
+    </div>
+
+    <!-- Main Content Section (hidden initially) -->
+    <div id="main-page" class="hidden">
+        <h1>🎉 Scan Me 🎉</h1>
+        <div id="qr-container">
+            <img id="qr" src="/images/Untitled.jpeg" alt="Scan QR code">
+        </div>
+    </div>
+    <script>
+        function checkAnswer() {
+            var answer = document.getElementById('user-answer').value.trim();
+            var errorMessage = document.getElementById('error-message');
+            if (answer.toLowerCase() == "java") {  // Correct answer
+                document.getElementById('form-container').classList.add('hidden');
+                document.getElementById('main-page').classList.remove('hidden');
+            } else {
+                errorMessage.textContent = "Incorrect answer. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
